@@ -7,7 +7,7 @@ using namespace std;
 
 template <class Type> class DynStack {
 private:
-    DynStack<Type> * array;
+    Type * array;
     int count,
         initialSize,
         arraySize;
@@ -15,7 +15,9 @@ private:
 public:
     DynStack()
             : count(0), initialSize(13), arraySize(13)
-    {}
+    {
+        Type * array = new Type[initialSize];
+    }
 
     DynStack(int initialSize)
             :count(0)
@@ -44,10 +46,12 @@ public:
     void push(Type const & data) {
         if (count == initialSize) {
             initialSize = initialSize * 2;
-            cout << "initialSize changed. " << initialSize << endl;
-            DynStack<Type> *temp = new DynStack<Type>(initialSize);
-            for (int i = count; i > 0 ; i--) {
-                temp[i*2] = array[i];
+            Type * temp ;
+            temp = new Type[initialSize];
+            for (int i = initialSize, j = count; i > count, j > 0; i--, j--) {
+                cout << "runs" << endl;
+                temp[i] = array[j];
+                cout << "runs" << endl;
             }
             delete[] array;
             array = temp;
