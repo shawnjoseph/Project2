@@ -35,25 +35,25 @@ public:
 //
     int size() const {cout << count << endl; return count; }
 //
-    int capacity() const { cout << arraySize << endl; return arraySize; }
+    int capacity() const { cout << "Cap :" << initialSize << endl; return initialSize; }
 //
     bool isEmpty() const { return count == 0; }
 //
 //    void Display() const {}
 
     void push(Type const & data) {
-        if(arraySize < initialSize - 1) {
-            if (count == initialSize) {
-                DynStack<Type> *temp = new DynStack<Type>(arraySize * 2);
-                for (int i = 0; i < arraySize; i++) {
-                    temp[i] = array[i];
-                }
-                delete[] array;
-                array = temp;
-                count++;
-                this->arraySize = data;
-                arraySize--;
+        if (count == initialSize) {
+            initialSize = initialSize * 2;
+            cout << "initialSize changed. " << initialSize << endl;
+            DynStack<Type> *temp = new DynStack<Type>(initialSize);
+            for (int i = count; i > 0 ; i--) {
+                temp[i*2] = array[i];
             }
+            delete[] array;
+            array = temp;
+            count++;
+            this->arraySize = data;
+            arraySize--;
         }
         else{
             count++;
