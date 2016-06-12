@@ -7,23 +7,24 @@ using namespace std;
 
 template <class Type> class DynStack {
 private:
-    Type * array;
+    Type * array = nullptr;
     int count,
         initialSize,
         arraySize;
 
 public:
     DynStack()
-            : count(0), initialSize(13), arraySize(13)
+            : count(0), initialSize(13), arraySize(initialSize - 1)
     {
-        Type * array = new Type[initialSize];
+        array = new Type[initialSize];
     }
 
     DynStack(int initialSize)
             :count(0)
     {
         this->initialSize = initialSize;
-        arraySize = initialSize;
+        arraySize = initialSize - 1;
+        array = new Type[initialSize];
     }
 
     ~DynStack(){
@@ -31,59 +32,53 @@ public:
     }
 
     Type top() const {
-        if(count == 0){ throw 404;}
-        return this->arraySize;
+        if(count == 0){ cout << "Error Stack Empty" << endl; }
+        return this->array[arraySize + 1];
     }
 //
-    int size() const {cout << count << endl; return count; }
+    int size() const {cout << "Size: " << count << endl; return count; }
 //
     int capacity() const { cout << "Cap :" << initialSize << endl; return initialSize; }
 //
     bool isEmpty() const { return count == 0; }
 //
-//    void Display() const {}
+    void Display() const {
+        if(count == 0){ cout << "Stack is empty" << endl; }
+        else
+            for(int i = arraySize; i < initialSize; i++){
+                if(array[i] == NULL){ continue; } //counts past top
+                cout << "#" << i << " : " << array[i] << endl;
+            };
+ }
 
     void push(Type const & data) {
         if (count == initialSize) {
             initialSize = initialSize * 2;
             Type * temp ;
             temp = new Type[initialSize];
-            for (int i = initialSize, j = count; i > count, j > 0; i--, j--) {
-                cout << "runs" << endl;
-                temp[i] = array[j];
-                cout << "runs" << endl;
+            for (int i = 0; i < count; i++) {
+                temp[initialSize - 1 - i] = array[count - 1 - i];
             }
             delete[] array;
             array = temp;
+            arraySize = count - 1;
             count++;
-            this->arraySize = data;
+            this->array[arraySize] = data;
             arraySize--;
         }
         else{
             count++;
-            this->arraySize = data;
+            this->array[arraySize] = data;
             arraySize--;
         }
     }
-//
-//    Type pop() {                    //Add Underflow Exception
-//        Type * tmp = array[arraySize];
-//        Type value = tmp;
-//        if(arraySize != -1){
-//            arraySize--;
-//            if(count <= (arraySize/2) && arraySize > initialSize){
-//                Type * temp = new DynStack(arraySize/2);
-//                for(int i = 0; i < arraySize; i++){
-//                    temp[i] = array[i];
-//                }
-//                delete [] array;
-//                array = temp;
-//            }
-//        }
-//        delete tmp;
-//        return value;
-//    }
-//
+
+    Type pop() {                    //Add Underflow Exception
+        Type value = array[arraySize + 1];
+        arraySize++;
+        return value;
+    }
+
 //    void clear() {
 //        Type * tmp = array[arraySize];
 //
