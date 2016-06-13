@@ -47,7 +47,7 @@ public:
         else
             for(int i = arraySize; i < initialSize; i++){
                 if(array[i] == NULL){ continue; } //counts past top
-                cout << "#" << i << " : " << array[i] << endl;
+                cout << "#" << i + 1 << " : " << array[i] << endl;
             };
  }
 
@@ -75,7 +75,20 @@ public:
 
     Type pop() {                    //Add Underflow Exception
         Type value = array[arraySize + 1];
-        arraySize++;
+        array[arraySize++] = array[arraySize++];
+        count--;
+        if(count == initialSize/4){
+
+            initialSize = initialSize/2;
+            Type * temp ;
+            temp = new Type[initialSize];
+            for (int i = 0; i < count; i++) {
+                temp[initialSize - 1 - i] = array[initialSize*2 - 1 - i];
+                cout << i + 1 << " : " << temp[initialSize - 1 - i] << endl;
+            }
+            delete [] array;
+            array = temp;
+        }
         return value;
     }
 
