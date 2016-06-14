@@ -2,21 +2,32 @@
 #include <iostream>
 using namespace std;
 
-template <class Type> class HashMap {
+template <class Key, class Value> class HashMap {
 private:
     // To be filled in later
+    int size;
+    int loadFactor;
+
 public:
-    Type search(Type query) {
-        // Searches for a value in the hashmap
-        cout << "Search has been activated" << endl;
+
+    HashMap() {
+        
+        size = 0;
     }
 
-    void insertValue(Type value) {
+
+    Value search(Key query) {
+        // Searches for a value in the hashmap
+        cout << "Search has been activated" << endl;
+
+    }
+
+    void insertValue(Key key) {
         // Inserts a value into the hashmap
         cout << "Insert has been activated" << endl;
     }
 
-    void deleteValue(Type value) {
+    void deleteValue(Key key) {
         // Deletes a value from the hashmap
         cout << "Delete has been activated" << endl;
     }
