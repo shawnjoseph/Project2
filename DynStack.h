@@ -42,12 +42,12 @@ public:
 //
     bool isEmpty() const { return count == 0; }
 //
-    void Display() const {
+    void Display() {
         if(count == 0){ cout << "Stack is empty" << endl; }
         else
             for(int i = arraySize; i < initialSize; i++){
                 if(array[i] == NULL){ continue; } //counts past top
-                cout << "#" << i + 1 << " : " << array[i] << endl;
+                cout << "#" << i << " " << array[i] << endl;
             };
  }
 
@@ -75,16 +75,16 @@ public:
 
     Type pop() {                    //Add Underflow Exception
         Type value = array[arraySize + 1];
-        array[arraySize++] = array[arraySize++];
+        array[arraySize + 1] = array[arraySize++];
         count--;
         if(count == initialSize/4){
 
             initialSize = initialSize/2;
+            arraySize = arraySize/2 - 2;
             Type * temp ;
             temp = new Type[initialSize];
             for (int i = 0; i < count; i++) {
                 temp[initialSize - 1 - i] = array[initialSize*2 - 1 - i];
-                cout << i + 1 << " : " << temp[initialSize - 1 - i] << endl;
             }
             delete [] array;
             array = temp;
@@ -92,25 +92,34 @@ public:
         return value;
     }
 
-//    void clear() {
-//        Type * tmp = array[arraySize];
-//
-//        while(tmp != nullptr){
-//            tmp = array[arraySize];
-//            if(arraySize != -1){
-//                arraySize--;
-//            }
-//            delete tmp;
-//        }
-//
-//    }
+    void clear() {
+        Type * temp = new Type[initialSize];
+        DynStack::~DynStack();
+        array = temp;
+        arraySize = initialSize - 1;
+        }
 
-//    int erase (Type const & data) {
-//        Type * temp = new DynStack(arraySize);
-//        if(array[arraySize] == data){
-//            pop();
+    int erase (Type const & data) {
+        int i = initialSize - 1;
+        Type * temp = new Type[initialSize];
+        while(top() != NULL){
+            int tmp_val;
+            tmp_val = pop();
+            if(tmp_val != data){
+                temp[i] = tmp_val;
+            }
+            i--;
+        }           //Work on getting values in temp back to array
+//        delete [] array;
+//        array = temp;
+//        cout << "arraySize: " << arraySize << endl;
+//        cout << "initialSize: " << initialSize << endl;
+//        cout << "count : " << count << endl;
+//        for(int i = 0; i < initialSize; i++){
+//            array[initialSize - 1 - i] = temp[i];
 //        }
-//    }
+//        delete temp;
+    }
 
 };
 
