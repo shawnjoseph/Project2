@@ -20,7 +20,7 @@ int main() {
 //    stack2->pop();
 //    stack2->Display();
     stack2->erase(1);
-    stack2->Display();
+    stack2->display();
 //    stack1->isEmpty() == true ? cout << "Yes" << endl : cout << "No" << endl;
 //    cout << "Hello, World!" << endl;
     return 0;

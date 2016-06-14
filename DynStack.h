@@ -42,7 +42,7 @@ public:
 //
     bool isEmpty() const { return count == 0; }
 //
-    void Display() {
+    void display() {
         if(count == 0){ cout << "Stack is empty" << endl; }
         else
             for(int i = arraySize; i < initialSize; i++){
