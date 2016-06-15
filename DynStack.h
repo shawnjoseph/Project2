@@ -11,20 +11,21 @@ private:
     Type * array = NULL;
     int count,
         initialSize,
-        arraySize;
+        arraySize,
+        myTop;
 
 public:
     DynStack()
-            : count(0), initialSize(13), arraySize(initialSize - 1)
+            : count(0), initialSize(13), arraySize(initialSize), myTop(-1)
     {
         array = new Type[initialSize];
     }
 
     DynStack(int initialSize)
-            :count(0)
+            :count(0), myTop(-1)
     {
         this->initialSize = initialSize;
-        arraySize = initialSize - 1;
+        arraySize = initialSize;
         array = new Type[initialSize];
     }
 
@@ -33,73 +34,86 @@ public:
     }
 
     Type top() const {
-        if(count == 0){ cout << "Error Stack Empty" << endl; }
-        return this->array[arraySize + 1];
+        if(myTop == -1){ cout << "Error Stack Empty" << endl; }
+        return this->array[myTop];
     }
 //
     int size() const {cout << "Size: " << count << endl; return count; }
 //
-    int capacity() const { cout << "Cap :" << initialSize << endl; return initialSize; }
+    int capacity() const { cout << "Capacity: " << arraySize << endl; return arraySize; }
 //
     bool isEmpty() const { return count == 0; }
 //
     void display() {
         if(count == 0){ cout << "Stack is empty" << endl; }
         else
-            for(int i = arraySize + 1; i < initialSize; i++){
-                cout << "#" << i + 1 << " " << array[i] << endl;
+            for(int i = myTop; i >= 0; i--){
+                cout << "#" << myTop - i << " " << array[i] << endl;
             };
  }
 
     void push(Type const & data) {
-        if (count == initialSize) {
-            initialSize = initialSize * 2;
-            Type * temp ;
-            temp = new Type[initialSize];
+        if (myTop < capacity() - 1) {
+            myTop++;
+            array[myTop] = data;
+        }
+        else {
+            arraySize = arraySize * 2;
+            Type *temp;
+            temp = new Type[arraySize];
             for (int i = 0; i < count; i++) {
-                temp[initialSize - 1 - i] = array[count - 1 - i];
+                temp[i] = array[i];
             }
             delete[] array;
             array = temp;
-            arraySize = count - 1;
             count++;
-            this->array[arraySize] = data;
-            arraySize--;
-        }
-        else{
-            count++;
-            this->array[arraySize] = data;
-            arraySize--;
+            myTop++;
+            this->array[myTop] = data;
         }
     }
 
-    Type pop() {                    //Add Underflow Exception
-        Type value = array[arraySize + 1];
-        array[arraySize + 1] = array[arraySize++];
-        count--;
-        if(count == initialSize/4){
+    Type pop() {
+        Type val  = array[myTop];
 
-            initialSize = initialSize/2;
-            arraySize = arraySize/2 - 2;
-            Type * temp ;
-            temp = new Type[initialSize];
+        if(myTop == -1) {
+            cerr << "Error: Stack is Empty." << endl;
+        }
+        else {
+            myTop--;
+            count--;
+        }
+        if(myTop == arraySize/4) {
+            arraySize = arraySize / 2;
+            Type *temp;
+            temp = new Type[arraySize];
+
             for (int i = 0; i < count; i++) {
-                temp[initialSize - 1 - i] = array[initialSize*2 - 1 - i];
+                temp[i] == array[i];
             }
-            delete [] array;
+            delete[] array;
             array = temp;
         }
-        return value;
+        return val;
     }
 
     void clear() {
         Type * temp = new Type[initialSize];
         DynStack::~DynStack();
         array = temp;
-        arraySize = initialSize - 1;
+        arraySize = initialSize;
         }
 
-//    int erase (Type const & data) {
+    int erase (Type const & data) {
+        int counter;
+        Type * temp  = new Type[arraySize];
+        while(myTop != 0){
+            Type tmp_val = pop();
+            if(tmp_val != data){
+                temp[myTop] = tmp_val;
+                myTop--;
+            }
+        }
+    }
 //        int i = initialSize - 1;
 //        Type * temp = new Type[initialSize];
 //        while(top() != 0){
