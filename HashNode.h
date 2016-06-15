@@ -20,4 +20,13 @@ public:
     Value getValue() {
         return value;
     }
+
+    void setValue(Value value) {
+        this->value = value;
+    }
+
+
+    bool operator==(HashNode<Key, Value>& a) {
+        return (this->key == a.key);
+    }
 };
