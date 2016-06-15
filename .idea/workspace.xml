@@ -14,7 +14,6 @@
     <list default="true" id="dedfc7ef-1c6c-442e-8979-e40200de413a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CommandProcessor.cpp" afterPath="$PROJECT_DIR$/CommandProcessor.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CommandProcessor.h" afterPath="$PROJECT_DIR$/CommandProcessor.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HashMap.h" afterPath="$PROJECT_DIR$/HashMap.h" />
     </list>
     <ignored path="Project2.iws" />
@@ -61,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandProcessor.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandProcessor.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CommandProcessor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="452">
+              <caret line="213" column="19" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -73,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HashMap.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HashMap.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HashMap.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="332">
+              <caret line="157" column="27" selection-start-line="157" selection-start-column="27" selection-end-line="157" selection-end-column="27" />
               <folding>
                 <element signature="e#13#32#0" expanded="true" />
                 <element signature="e#87#111#0" expanded="true" />
@@ -89,8 +88,8 @@
       <file leaf-file-name="HashNode.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HashNode.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#43#67#0" expanded="true" />
               </folding>
@@ -134,9 +133,10 @@
         <option value="$PROJECT_DIR$/Menu.h" />
         <option value="$PROJECT_DIR$/DynStack.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/HashNode.h" />
         <option value="$PROJECT_DIR$/CommandProcessor.h" />
         <option value="$PROJECT_DIR$/CommandProcessor.cpp" />
+        <option value="$PROJECT_DIR$/HashNode.h" />
+        <option value="$PROJECT_DIR$/test.cpp" />
         <option value="$PROJECT_DIR$/HashMap.h" />
       </list>
     </option>
@@ -679,31 +679,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HashNode.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
             <element signature="e#43#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HashMap.h">
+    <entry file="file://$PROJECT_DIR$/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#13#32#0" expanded="true" />
-            <element signature="e#87#111#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CommandProcessor.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="452">
+          <caret line="213" column="19" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HashMap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="157" column="27" selection-start-line="157" selection-start-column="27" selection-end-line="157" selection-end-column="27" />
+          <folding>
+            <element signature="e#13#32#0" expanded="true" />
+            <element signature="e#87#111#0" expanded="true" />
           </folding>
         </state>
       </provider>

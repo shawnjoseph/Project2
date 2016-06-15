@@ -211,5 +211,5 @@ void CommandProcessor::Create_Menus()
     menu->Add_Command("Delete");
     menu->Add_Command("Search");
     menu->Add_Command("Exit");
-    menus[Queue] = menu;
+    menus[HashTable] = menu;
 }
