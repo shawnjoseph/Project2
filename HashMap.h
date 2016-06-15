@@ -13,13 +13,13 @@ private:
     const double THRESHOLD = 0.5;
     Key hashResult;
 
-    HashNode **table;
+    HashNode<Key, Value> **table;
 
 public:
 
     HashMap() {
         tableSize = 10;
-        table = new HashNode*[tableSize];
+        table = new HashNode<Key, Value> *[tableSize]();
         numOfEntries = 0;
         // Set all values to NULL as default
         for(int i=0; i < 10; i++) {
@@ -40,7 +40,7 @@ public:
             // If a result is found
             if(table[hashResult]->next != NULL) {
                 // Means that there is more than one value there
-                HashNode *ptr = table[hashResult];
+                HashNode<Key, Value> *ptr = table[hashResult];
                 int arraySize = 0;
                 while(ptr != nullptr) {
                     // Figuring out the size array should be
@@ -77,12 +77,12 @@ public:
         // Debugging
         cout << "Hash result is: " << hashResult << endl;
 
-        if(table[hashResult] == NULL) {
+        if(*(table[hashResult]) == NULL) {
             table[hashResult] = value;
         } else {
             // Means there's already a value in there,
             // must implement chaining
-            HashNode *ptr = table[hashResult];
+            HashNode<Key, Value> *ptr = table[hashResult];
             while(ptr->next != nullptr) {
                 // Just setting ptr to the last node
             }
@@ -94,8 +94,8 @@ public:
             int oldTableSize = tableSize;
             tableSize *= 2;
             cout << "Resizing array to " << tableSize << endl;
-            HashNode **temp = table;
-            table = new HashNode*[tableSize];
+            HashNode<Key, Value> **temp = table;
+            table = new HashNode<Key, Value> *[tableSize];
             for(int i=0; i < oldTableSize; i++) {
                 table[i] = temp[i];
             }
@@ -109,9 +109,9 @@ public:
         if(table[hashResult] != NULL) {
             if(table[hashResult]->next != NULL) {
                 // There's more than one value
-                HashNode *temp = table[hashResult];
+                HashNode<Key, Value> *temp = table[hashResult];
                 while(temp->next != NULL) {
-                    HashNode *toDelete = temp;
+                    HashNode<Key, Value> *toDelete = temp;
                     temp = temp->next;
                     delete(toDelete);
                 }
