@@ -91,7 +91,7 @@ void CommandProcessor::ProcessStack(const string &cmd) {
         cout << "Insert value to erase from stack: " << endl;
         getline(cin, input);
         //stringstream(input) >> value;
-        stack->erase(input);
+//        stack->erase(input);
     }else if(cmd == "Exit"){
         exit(0);
     }else{

@@ -46,8 +46,7 @@ public:
     void display() {
         if(count == 0){ cout << "Stack is empty" << endl; }
         else
-            for(int i = arraySize; i < initialSize; i++){
-                if(array[i] == NULL){ continue; } //counts past top
+            for(int i = arraySize + 1; i < initialSize; i++){
                 cout << "#" << i + 1 << " " << array[i] << endl;
             };
  }
@@ -100,35 +99,34 @@ public:
         arraySize = initialSize - 1;
         }
 
-    int erase (Type const & data) {
-        int i = initialSize - 1;
-        Type * temp = new Type[initialSize];
-        while(top() != NULL){
-            int tmp_val;
-            tmp_val = pop();
-            if(tmp_val != data){
-                temp[i] = tmp_val;
-                i--;
-            }
-        }
-        delete [] array;
-        count = 0;
-        initialSize = 12;
-        arraySize = initialSize - 1;
-        array = new Type[initialSize];
-        for(int i = 0; i < initialSize*2; i++){
-            if(temp[i] != NULL){
-                this->push(temp[i]);
-            }
-        }
-        cout << "count: " << count << endl;
-        arraySize--;
-        initialSize++;
-        cout << "arraySize: "<< arraySize << endl;
-        cout << "initialSize :" << initialSize << endl;
-    }
+//    int erase (Type const & data) {
+//        int i = initialSize - 1;
+//        Type * temp = new Type[initialSize];
+//        while(top() != 0){
+//            int tmp_val;
+//            tmp_val = pop();
+//            if(tmp_val != data){
+//                temp[i] = tmp_val;
+//                i--;
+//            }
+//        }
+//        delete [] array;
+//        count = 0;
+//        initialSize = 12;
+//        arraySize = initialSize - 1;
+//        array = new Type[initialSize];
+//        for(int i = 0; i < initialSize*2; i++){
+//            if(temp[i] != NULL){
+//                this->push(temp[i]);
+//            }
+//        }
+//        cout << "count: " << count << endl;
+//        arraySize--;
+//        initialSize++;
+//        cout << "arraySize: "<< arraySize << endl;
+//        cout << "initialSize :" << initialSize << endl;
+//    }
 
-    bool operator ==(const char & rhs){ return this == rhs; }
 
 };
 
