@@ -16,10 +16,13 @@ int main() {
     stack2->push(100);
     stack2->push(999);
     stack2->push(99);
+//    stack2->push(9);
+    stack2->push(999);
+    stack2->push(99);
     stack2->push(9);
 //    stack2->pop();
 //    stack2->Display();
-    stack2->erase(1);
+//    stack2->erase(1);
     stack2->display();
 //    stack1->isEmpty() == true ? cout << "Yes" << endl : cout << "No" << endl;
 //    cout << "Hello, World!" << endl;

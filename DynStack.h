@@ -2,12 +2,13 @@
 #define PROJECT2_STACK_H
 
 #include <iostream>
+#include <string>
 #include <stdexcept>
 using namespace std;
 
 template <class Type> class DynStack {
 private:
-    Type * array = nullptr;
+    Type * array = NULL;
     int count,
         initialSize,
         arraySize;
@@ -47,7 +48,7 @@ public:
         else
             for(int i = arraySize; i < initialSize; i++){
                 if(array[i] == NULL){ continue; } //counts past top
-                cout << "#" << i << " " << array[i] << endl;
+                cout << "#" << i + 1 << " " << array[i] << endl;
             };
  }
 
@@ -107,19 +108,27 @@ public:
             tmp_val = pop();
             if(tmp_val != data){
                 temp[i] = tmp_val;
+                i--;
             }
-            i--;
-        }           //Work on getting values in temp back to array
-//        delete [] array;
-//        array = temp;
-//        cout << "arraySize: " << arraySize << endl;
-//        cout << "initialSize: " << initialSize << endl;
-//        cout << "count : " << count << endl;
-//        for(int i = 0; i < initialSize; i++){
-//            array[initialSize - 1 - i] = temp[i];
-//        }
-//        delete temp;
+        }
+        delete [] array;
+        count = 0;
+        initialSize = 12;
+        arraySize = initialSize - 1;
+        array = new Type[initialSize];
+        for(int i = 0; i < initialSize*2; i++){
+            if(temp[i] != NULL){
+                this->push(temp[i]);
+            }
+        }
+        cout << "count: " << count << endl;
+        arraySize--;
+        initialSize++;
+        cout << "arraySize: "<< arraySize << endl;
+        cout << "initialSize :" << initialSize << endl;
     }
+
+    bool operator ==(const char & rhs){ return this == rhs; }
 
 };
 
