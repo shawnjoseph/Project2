@@ -35,6 +35,9 @@ void CommandProcessor::Process_Commands()
             case Stack: ProcessStack(*cmd);
                 break;
 
+            case Queue: ProcessQueue(*cmd);
+                break;
+
 
             case HashTable: ProcessHashTable(*cmd);
                 break;
