@@ -2,6 +2,7 @@
 #include "CommandProcessor.h"
 #include "DynStack.h"
 #include "HashMap.h"
+#include "DynQueue.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ Menu* CommandProcessor::menus[NR_CMD_STATES];
 
 // Create Stack, Queue, HashMap here
 DynStack<string> *stack = new DynStack<string>();
-//DynQueue<string> *queue = new DynQueue<string>();
+DynQueue<string> *queue = new DynQueue<string>();
 HashMap<string, string> *hashMap = new HashMap<string, string>();
 
 
@@ -34,8 +35,6 @@ void CommandProcessor::Process_Commands()
             case Stack: ProcessStack(*cmd);
                 break;
 
-//            case Queue: ProcessQueue(*cmd);
-//                break;
 
             case HashTable: ProcessHashTable(*cmd);
                 break;
@@ -52,6 +51,9 @@ void CommandProcessor::Process_Commands()
 void CommandProcessor::Process_Initial_Cmd(const string& cmd) {
     if (cmd == "Stack") {
         command_state = Stack;
+    }
+    else if(cmd == "Queue"){
+        command_state = Queue;
     }
     else if (cmd == "HashTable") {
         command_state = HashTable;
@@ -97,43 +99,43 @@ void CommandProcessor::Process_Initial_Cmd(const string& cmd) {
             }
         }
 
-//void CommandProcessor::ProcessQueue(const string &cmd) {
-//    if (cmd == "Return Front Object") {
-//        queue->front();
-//    }else if (cmd == "Return Back Object") {
-//        queue->back();
-//    }else if (cmd == "Get Size") {
-//        queue->size();
-//    }else if (cmd == "Is List Empty"){
-//        queue->isEmpty();
-//    }else if(cmd == "Get Capacity/Array Size") {
-//        queue->capacity();
-//    }else if(cmd == "Display Queue") {
-//        queue->display();
-//    }else if(cmd == "Enqueue"){
-//        string input;
-//        double value;
-//        cout << "Enter string to enqueue: " << endl;
-//        getline(cin,input);
-//        //stringstream(input) >> value;
-//        queue->enqueue(input);
-//    }else if(cmd == "Dequeue"){
-//        queue->dequeue();
-//    }else if(cmd == "Clear"){
-//        queue->clear();
-//    }else if(cmd == "Erase") {
-//        string input;
-//        //double value;
-//        cout << "Insert value to erase from queue: " << endl;
-//        getline(cin, input);
-//        //stringstream(input) >> value;
-//        queue->erase(input);
-//    }else if(cmd == "Exit"){
-//        exit(0);
-//    }else{
-//        cout << "Error" << endl;
-//    }
-//}
+void CommandProcessor::ProcessQueue(const string &cmd) {
+    if (cmd == "Return Front Object") {
+        queue->front();
+    }else if (cmd == "Return Back Object") {
+        queue->back();
+    }else if (cmd == "Get Size") {
+        queue->size();
+    }else if (cmd == "Is List Empty"){
+        queue->empty();
+    }else if(cmd == "Get Capacity/Array Size") {
+        queue->capacity();
+    }else if(cmd == "Display Queue") {
+        queue->display();
+    }else if(cmd == "Enqueue"){
+        string input;
+        double value;
+        cout << "Enter string to enqueue: " << endl;
+        getline(cin,input);
+        //stringstream(input) >> value;
+        queue->enqueue(input);
+    }else if(cmd == "Dequeue"){
+        queue->dequeue();
+    }else if(cmd == "Clear"){
+        queue->clear();
+    }else if(cmd == "Erase") {
+        string input;
+        //double value;
+        cout << "Insert value to erase from queue: " << endl;
+        getline(cin, input);
+        //stringstream(input) >> value;
+        queue->erase(input);
+    }else if(cmd == "Exit"){
+        exit(0);
+    }else{
+        cout << "Error" << endl;
+    }
+}
 
 
         void CommandProcessor::ProcessHashTable(const string &cmd) {
@@ -168,7 +170,7 @@ void CommandProcessor::Process_Initial_Cmd(const string& cmd) {
             Menu *menu = new Menu("Which linked list do you want to create?");
             menu->Add_Command("Stack");
             menu->Add_Command("Queue");
-            menu->Add_Command("HashMap");
+            menu->Add_Command("HashTable");
             menu->Add_Command("Cancel");
 
             menus[Initial] = menu;
@@ -188,19 +190,19 @@ void CommandProcessor::Process_Initial_Cmd(const string& cmd) {
             menus[Stack] = menu;
 
             //Menu for Queue
-//    menu = new Menu("Enter command number:\n");
-//    menu->Add_Command("Return Front Object");
-//    menu->Add_Command("Return Back Object");
-//    menu->Add_Command("Get Size");
-//    menu->Add_Command("Is List Empty");
-//    menu->Add_Command("Get Capacity/Array Size");
-//    menu->Add_Command("Display Queue");
-//    menu->Add_Command("Enqueue");
-//    menu->Add_Command("Dequeue");
-//    menu->Add_Command("Clear");
-//    menu->Add_Command("Erase");
-//    menu->Add_Command("Exit");
-//    menus[Queue] = menu;
+            menu = new Menu("Enter command number:\n");
+            menu->Add_Command("Return Front Object");
+            menu->Add_Command("Return Back Object");
+            menu->Add_Command("Get Size");
+            menu->Add_Command("Is List Empty");
+            menu->Add_Command("Get Capacity/Array Size");
+            menu->Add_Command("Display Queue");
+            menu->Add_Command("Enqueue");
+            menu->Add_Command("Dequeue");
+            menu->Add_Command("Clear");
+            menu->Add_Command("Erase");
+            menu->Add_Command("Exit");
+            menus[Queue] = menu;
 
             //Menu for HashMap
             menu = new Menu("Enter command number:\n");

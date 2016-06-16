@@ -38,9 +38,20 @@ public:
     void display(){}
 
     Type enqueue(Type const & data){
-        int newTail = (itail + 1)%
+        int newTail = (itail + 1)%arraySize;
+        if(newTail != ihead){
+            array[itail]=data;
+            itail=newTail;
+        }
+        else {
+            exit(0);
+        }
     }
-    Type dequeue(){}
+    Type dequeue(){
+        if(!empty()){
+            ihead = (ihead+1)%arraySize;
+        }
+    }
     void clear(){}
     int erase(Type const & data){}
 
