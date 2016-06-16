@@ -18,6 +18,8 @@ private:
     static Command_States command_state;
     static Menu* menus[NR_CMD_STATES];
 
+    CommandProcessor(void) {};
+
     static void Create_Menus();
     static void Process_Initial_Cmd(const string& cmd);
     static void ProcessStack(const string& cmd);
@@ -25,5 +27,4 @@ private:
     static void ProcessHashTable(const string& cmd);
 
 
-    CommandProcessor(void) {};
 };

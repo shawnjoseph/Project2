@@ -42,10 +42,16 @@ public:
 //
     int capacity() const { cout << "Capacity: " << arraySize << endl; return arraySize; }
 //
-    bool isEmpty() const { return count == 0; }
+    bool isEmpty() const {
+        if (count == 0) {
+            cout << "Yes. Stack is Empty.\n";
+        } else {
+            "No. Stack is Not Empty.\n";
+        }
+    }
 //
     void display() {
-        if(count == 0){ cout << "Stack is empty" << endl; }
+        if(count == 0){ cout << "Stack is empty\n" << endl; }
         else
             for(int i = myTop; i >= 0; i--){
                 cout << "#" << myTop + 1 - i << " " << array[i] << endl;
