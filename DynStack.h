@@ -88,7 +88,7 @@ public:
             temp = new Type[arraySize];
 
             for (int i = 0; i < count; i++) {
-                temp[i] == array[i];
+                temp[i] = array[i];
             }
             delete[] array;
             array = temp;
@@ -105,41 +105,15 @@ public:
 
     int erase (Type const & data) {
         int counter;
-        Type * temp  = new Type[arraySize];
-        while(myTop != 0){
+        Type *temp = new Type[arraySize];
+        while (myTop != 0) {
             Type tmp_val = pop();
-            if(tmp_val != data){
+            if (tmp_val != data) {
                 temp[myTop] = tmp_val;
                 myTop--;
             }
         }
     }
-//        int i = initialSize - 1;
-//        Type * temp = new Type[initialSize];
-//        while(top() != 0){
-//            int tmp_val;
-//            tmp_val = pop();
-//            if(tmp_val != data){
-//                temp[i] = tmp_val;
-//                i--;
-//            }
-//        }
-//        delete [] array;
-//        count = 0;
-//        initialSize = 12;
-//        arraySize = initialSize - 1;
-//        array = new Type[initialSize];
-//        for(int i = 0; i < initialSize*2; i++){
-//            if(temp[i] != NULL){
-//                this->push(temp[i]);
-//            }
-//        }
-//        cout << "count: " << count << endl;
-//        arraySize--;
-//        initialSize++;
-//        cout << "arraySize: "<< arraySize << endl;
-//        cout << "initialSize :" << initialSize << endl;
-//    }
 
 
 };

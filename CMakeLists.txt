@@ -3,5 +3,5 @@ project(Project2)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp DynStack.h CommandProcessor.cpp CommandProcessor.h Menu.cpp Menu.h HashMap.h HashNode.h)
-add_executable(Project2 ${SOURCE_FILES} DynStack.h)
+set(SOURCE_FILES main.cpp DynStack.h CommandProcessor.cpp CommandProcessor.h Menu.cpp Menu.h HashMap.h HashNode.h DynQueue.h)
+add_executable(Project2 ${SOURCE_FILES} DynStack.h DynQueue.h)
