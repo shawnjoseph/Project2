@@ -24,6 +24,26 @@ public:
         arraySize = initialSize;
     }
 
+    ~DynQueue(){
+        delete [] array;
+    }
+
+    Type front() const { return array[ihead]; }
+    Type back() const { return array[itail]; }
+
+    int size() const{ return count; }
+    int capacity() const{ return arraySize; }
+    bool empty() const{ return ihead == itail; }
+
+    void display(){}
+
+    Type enqueue(Type const & data){
+        int newTail = (itail + 1)%
+    }
+    Type dequeue(){}
+    void clear(){}
+    int erase(Type const & data){}
+
 
 
 };
