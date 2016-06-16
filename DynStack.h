@@ -48,16 +48,18 @@ public:
         if(count == 0){ cout << "Stack is empty" << endl; }
         else
             for(int i = myTop; i >= 0; i--){
-                cout << "#" << myTop - i << " " << array[i] << endl;
+                cout << "#" << myTop + 1 - i << " " << array[i] << endl;
             };
  }
 
     void push(Type const & data) {
-        if (myTop < capacity() - 1) {
+        if (myTop < arraySize - 1) {
             myTop++;
+            count++;
             array[myTop] = data;
         }
-        else {
+        else
+        {
             arraySize = arraySize * 2;
             Type *temp;
             temp = new Type[arraySize];
@@ -104,15 +106,23 @@ public:
         }
 
     int erase (Type const & data) {
-        int counter;
+        int counter = 0;
         Type *temp = new Type[arraySize];
-        while (myTop != 0) {
-            Type tmp_val = pop();
-            if (tmp_val != data) {
-                temp[myTop] = tmp_val;
+        for(int i = 0, j=0; i < arraySize; i++, j++){
+            Type tmp_val = array[i];
+            if(tmp_val != data ){
+                temp[j] = tmp_val;
+            }
+            else{
+                j--;
+                counter++;
                 myTop--;
             }
         }
+
+        delete [] array;
+        array = temp;
+        return counter;
     }
 
 

@@ -11,7 +11,7 @@ Command_States CommandProcessor:: command_state = Initial;
 Menu* CommandProcessor::menus[NR_CMD_STATES];
 
 // Create Stack, Queue, HashMap here
-DynStack<string> *stack = new DynStack<string>();
+DynStack<double> *stack = new DynStack<double>();
 DynQueue<string> *queue = new DynQueue<string>();
 HashMap<string, string> *hashMap = new HashMap<string, string>();
 
@@ -78,22 +78,18 @@ void CommandProcessor::Process_Initial_Cmd(const string& cmd) {
             } else if (cmd == "Display Stack") {
                 stack->display();
             } else if (cmd == "Push") {
-                string input;
-//            double value;
-                cout << "Enter string to push: " << endl;
-                getline(cin, input);
-                //stringstream(input) >> value;
+                double input;
+                cout << "Enter value: " << endl;
+                cin >> input;
                 stack->push(input);
             } else if (cmd == "Pop") {
                 stack->pop();
             } else if (cmd == "Clear") {
                 stack->clear();
             } else if (cmd == "Erase") {
-                string input;
-                //double value;
+                double input;
                 cout << "Insert value to erase from stack: " << endl;
-                getline(cin, input);
-                //stringstream(input) >> value;
+                cin >> input;
                 stack->erase(input);
             } else if (cmd == "Exit") {
                 exit(0);
