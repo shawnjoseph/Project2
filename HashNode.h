@@ -25,6 +25,10 @@ public:
         this->value = value;
     }
 
+    void setKey(Key key) {
+        this->key = key;
+    }
+
 
     bool operator==(HashNode<Key, Value>& a) {
         return (this->key == a.key);

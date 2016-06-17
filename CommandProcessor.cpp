@@ -139,21 +139,27 @@ void CommandProcessor::ProcessHashTable(const string &cmd) {
         int key;
         cout << "Enter key value of node: " << endl;
         cin >> key;
-
         int value;
         cout << "Enter value of node: " << endl;
         cin >> value;
+        getchar();
         hashMap->insertValue(key, value);
+        hashMap->print();
     } else if (cmd == "Delete") {
         int key;
         cout << "Enter key to delete: " << endl;
         cin >> key;
+        getchar();
         hashMap->deleteValue(key);
+        hashMap->print();
     } else if (cmd == "Search") {
         int key;
         cout << "Enter key to search for: " << endl;
         cin >> key;
+        getchar();
         hashMap->search(key);
+    } else if (cmd == "Print") {
+        hashMap->print();
     } else if (cmd == "Exit") {
         exit(0);
     } else {
@@ -205,6 +211,7 @@ void CommandProcessor::Create_Menus() {
     menu->Add_Command("Insert");
     menu->Add_Command("Delete");
     menu->Add_Command("Search");
+    menu->Add_Command("Print");
     menu->Add_Command("Exit");
     menus[HashTable] = menu;
 }

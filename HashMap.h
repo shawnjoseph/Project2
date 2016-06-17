@@ -1,17 +1,18 @@
 #pragma once
+
 #include <iostream>
 #include "HashNode.h"
 
 using namespace std;
 
-template <class Key, class Value> class HashMap {
+template<class Key, class Value>
+class HashMap {
 private:
     // To be filled in later
     int tableSize;
-    const int COL = 2;
     int numOfEntries;
     double loadFactor;
-    const double THRESHOLD = 0.5;
+    const double THRESHOLD = 0.3;
     Key hashResult;
     HashNode<Key, Value> **table;
 
@@ -19,50 +20,33 @@ public:
 
     HashMap() {
         tableSize = 10;
-        // Create 2D array of pointers:
         table = new HashNode<Key, Value> *[tableSize];
-//        for (int i = 0; i < tableSize; ++i) {
-//            table[i] = new HashNode<Key, Value> *[COL];
-//        }
         numOfEntries = 0;
         // Set all values to NULL as default
-        for (int i = 0; i < tableSize; ++i) {
-            for (int j = 0; j < COL; ++j) {
-                table[i] = NULL;
-            }
+        for (int i = 0; i < tableSize; i++) {
+            table[i] = NULL;
         }
     }
 
     ~HashMap() {
-        // Fill this in later
+        for(int i=0; i < numOfEntries; i++) {
+            if(table[i]->next != NULL) {
+                HashNode<Key, Value> *ptr = table[i];
+                while(ptr != NULL) {
+                    HashNode<Key, Value> *temp = ptr;
+                    ptr = ptr->next;
+                    delete *temp;
+                }
+            } else {
+                delete table[i];
+            }
+        }
     }
 
 
     Value *search(Key query) {
         // Searches for a value in the hashmap
-        cout << "Search has been activated" << endl;
         hashResult = hash<Key>{}(query);
-
-        /*
-         * Ok listen up idiot
-         * You can't query a fucking array by a string index
-         * That's what the fuck you're trying to implement
-         * So here's what you're gonna do tomorrow
-         * Make the array 2 dimensional,
-         * with the hash key being the first part and the
-         * value being the second.
-         *
-         * Then, in search, loop through the array looking for one
-         * that matches the hash in the [x][0]
-         * then check if [x][1]->next is NULL
-         *
-         * With insert, just loop through the array and check
-         * to see if the key is already in one of the [x][0]
-         * if it isn't, just push a new value
-         *
-         * REDACTED DO NOT USE THIS ONE
-         */
-
 
         /*
          * Ok NOW LISTEN
@@ -79,33 +63,35 @@ public:
          */
 
         for (int i = 0; i < tableSize; i++) {
-
-            if (table[i]->getKey() == hashResult) {
-                // If a result is found
-                if ((table[i]->next) == NULL) {
-                    // Means that there is more than one value there
-                    HashNode<Key, Value> *ptr = table[i];
-                    int arraySize = 0;
-                    while (ptr != NULL) {
-                        // Figuring out the size array should be
-                        arraySize++;
-                        ptr = ptr->next;
+            if (table[i] != NULL) {
+                if (table[i]->getKey() == hashResult) {
+                    // If a result is found
+                    if ((table[i]->next) != NULL) {
+                        // Means that there is more than one value there
+                        HashNode<Key, Value> *ptr = table[i];
+                        int arraySize = 0;
+                        while (ptr != NULL) {
+                            // Figuring out the size array should be
+                            arraySize++;
+                            ptr = ptr->next;
+                        }
+                        Value *result = new Value[arraySize];
+                        ptr = table[i];
+                        cout << "List of results: " << endl;
+                        for (int j = 0; j < arraySize; j++) {
+                            result[j] = ptr->getValue();
+                            ptr = ptr->next;
+                            cout << result[j] << endl;
+                        }
+                        return result;
+                    } else {
+                        // Means there's only one value there
+                        Value *result = new Value[1];
+                        result[0] = table[i]->getValue();
+                        cout << "List of results: " << endl;
+                        cout << result[0] << endl;
+                        return result;
                     }
-                    Value *result = new Value[arraySize];
-                    ptr = table[i];
-                    cout << "List of results: " << endl;
-                    for (int j = 0; j < arraySize; j++) {
-                        result[j] = ptr->getValue();
-                        ptr = ptr->next;
-                        cout << result[j] << endl;
-                    }
-                    return result;
-
-                } else {
-                    // Means there's only one value there
-                    Value *result = new Value[1];
-                    result[0] = table[i]->getValue();
-                    return result;
                 }
             }
         }
@@ -115,37 +101,43 @@ public:
     }
 
     void insertValue(Key key, Value value) {
+        // Boolean to track whether the for loop found any value
+        bool blankInsert = true;
         // Inserts a value into the hashmap
-        cout << "Insert has been activated" << endl;
-        numOfEntries++;
-        loadFactor = numOfEntries / tableSize;
-        hashResult = hash<Key>{}(key);
-        // Debugging
-        cout << "Hash result is: " << hashResult << endl;
-        for(int i=0; i < tableSize; i++) {
-            if(table[i]->getKey() == hashResult) {
-                table[i]->setValue(value);
-            } else {
-                // Means there's already a value in there,
-                // must implement chaining
-                HashNode<Key, Value> *ptr = table[i];
-                while (ptr->next != NULL) {
-                    // Just setting ptr to the last node
+        loadFactor = numOfEntries / (double) tableSize;
+        hashResult = hash<Key>()(key);
+        for (int i = 0; i < tableSize; i++) {
+            if (table[i] != NULL) {
+                if (table[i]->getKey() == hashResult) {
+                    blankInsert = false;
+                    if (table[i]->next != NULL) {
+                        // Means there's already a value in there,
+                        // must implement chaining
+                        HashNode<Key, Value> *ptr = table[i];
+                        while (ptr->next != NULL) {
+                            // Just setting ptr to the last node
+                            ptr = ptr->next;
+                        }
+                        ptr->next = new HashNode<Key, Value>(hashResult, value);
+                    } else {
+                        table[i]->next = new HashNode<Key, Value>(hashResult, value);
+                    }
                 }
-                ptr->next = new HashNode<Key, Value>(hashResult, value);
             }
         }
+        if (blankInsert) {
+            // No key value matches, creating new space
+            numOfEntries++;
+            table[numOfEntries - 1] = new HashNode<Key, Value>(hashResult, value);
+        }
         // Checking to see if need to increase size of HashMap
-        if(loadFactor > THRESHOLD) {
+        if (loadFactor > THRESHOLD) {
             int oldTableSize = tableSize;
             tableSize *= 2;
-            cout << "Resizing array to " << tableSize << endl;
+//            cout << "Resizing array to " << tableSize << endl;
             HashNode<Key, Value> **temp = table;
             table = new HashNode<Key, Value> *[tableSize];
-//            for (int i = 0; i < tableSize; ++i) {
-//                table[i] = new HashNode<Key, Value> *[COL];
-//            }
-            for(int i=0; i < oldTableSize; i++) {
+            for (int i = 0; i < oldTableSize; i++) {
                 table[i] = temp[i];
             }
             delete temp;
@@ -155,21 +147,68 @@ public:
 
     void deleteValue(Key key) {
         // Deletes a value from the hashmap
-        for(int i=0; i < tableSize; i++) {
-            if (table[i]->getKey() != hashResult) {
-                if (table[i]->next != NULL) {
-                    // There's more than one value
-                    HashNode<Key, Value> *temp = table[i];
-                    while (temp->next != NULL) {
-                        HashNode<Key, Value> *toDelete = temp;
-                        temp = temp->next;
-                        delete (toDelete);
+        bool found = false;
+        hashResult = hash<Key>()(key);
+        for (int i = 0; i < numOfEntries; i++) {
+            if (table[i] != NULL) {
+                if (table[i]->getKey() == hashResult) {
+                    found = true;
+                    if (table[i]->next != NULL) {
+                        // There's more than one value
+                        HashNode<Key, Value> *temp = table[i];
+                        while (temp->next != NULL) {
+                            HashNode<Key, Value> *toDelete = temp;
+                            temp = temp->next;
+                            delete (toDelete);
+                        }
+                        for (int j = i + 1; j < numOfEntries; j++) {
+                            *table[i] = *table[j];
+                            table[numOfEntries-1] = NULL;
+                        }
+                    } else {
+                        // Only one element in there
+                        HashNode<Key, Value> *temp = table[i];
+                        for (int j = i + 1; j < numOfEntries; j++) {
+                            *table[i] = *table[j];
+                            table[numOfEntries-1] = NULL;
+                        }
+                        delete temp;
                     }
-                    delete temp;
                 }
             }
+
         }
-        cout << "Delete has been activated" << endl;
+        if(found) {
+            numOfEntries--;
+        } else {
+            cout << "Key value was not found" << endl;
+        }
+    }
+
+    void print() {
+        int counter = 1;
+        for (int i = 0; i < numOfEntries; i++) {
+            if (table[i] != NULL) {
+                if(table[i]->next != NULL) {
+                    // More than one value
+                    HashNode<Key, Value> *ptr = table[i];
+                    while(ptr != NULL) {
+                        cout << "Item number: " << counter << endl;
+                        cout << "Key: " << ptr->getKey() << endl;
+                        cout << "Value: " << ptr->getValue() << endl;
+                        ptr = ptr->next;
+                        counter++;
+                    }
+                } else {
+                    cout << "Item number: " << counter << endl;
+                    cout << "Key: " << table[i]->getKey() << endl;
+                    cout << "Value: " << table[i]->getValue() << endl;
+                    counter++;
+                }
+            } else {
+                cout << "Null value" << endl;
+            }
+
+        }
     }
 };
-
