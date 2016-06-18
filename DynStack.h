@@ -48,6 +48,7 @@ public:
         } else {
             "No. Stack is Not Empty.\n";
         }
+        return count == 0;
     }
 //
     void display() {
@@ -128,6 +129,18 @@ public:
 
         delete [] array;
         array = temp;
+
+        if (myTop == arraySize / 4) {
+            arraySize = arraySize / 2;
+            Type *temp2;
+            temp2 = new Type[arraySize];
+
+            for (int i = 0; i < count; i++) {
+                temp2[i] = array[i];
+            }
+            delete[] array;
+            array = temp2;
+        }
         return counter;
     }
 

@@ -78,7 +78,7 @@ public:
 
     }
 
-    Type enqueue(Type const &data) {
+    void enqueue(Type const &data) {
         if (count < arraySize - 1) {
             ihead = 0;
             itail = count;
@@ -135,13 +135,12 @@ public:
 
     int erase(Type const &data) {
         int counter = 0;
+        int size = count;
         Type *temp = new Type[arraySize];
-        arraySize;
-        for(int i=0, j=0; i < count; i++, j++){
+        for (int i = 0, j = 0; i < size; i++, j++) {
             Type tmp_val = array[i];
             if(tmp_val != data ){
                 temp[j] = tmp_val;
-                cout << "Temp: " << temp[j] << endl;
             }
             else{
                 j--;
@@ -149,9 +148,20 @@ public:
                 count--;
             }
         }
-
         delete [] array;
         array = temp;
+
+        if (count == arraySize / 4) {
+            arraySize = arraySize / 2;
+            Type *temp2;
+            temp2 = new Type[arraySize];
+
+            for (int i = 0; i < count; i++) {
+                temp2[i] = array[i];
+            }
+            delete[] array;
+            array = temp2;
+        }
         return counter;
     }
 

@@ -82,6 +82,7 @@ void CommandProcessor::ProcessStack(const string &cmd) {
         double input;
         cout << "Enter value: " << endl;
         cin >> input;
+        getchar();
         stack->push(input);
     } else if (cmd == "Pop") {
         stack->pop();
@@ -91,6 +92,7 @@ void CommandProcessor::ProcessStack(const string &cmd) {
         double input;
         cout << "Enter value to erase from stack: " << endl;
         cin >> input;
+        getchar();
         stack->erase(input);
     } else if (cmd == "Exit") {
         exit(0);
@@ -116,6 +118,7 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
         double input;
         cout << "Enter double to enqueue: " << endl;
         cin >> input;
+        getchar();
         queue->enqueue(input);
     } else if (cmd == "Dequeue") {
         queue->dequeue();
@@ -125,6 +128,7 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
         double input;
         cout << "Enter value to erase from queue: " << endl;
         cin >> input;
+        getchar();
         queue->erase(input);
     } else if (cmd == "Exit") {
         exit(0);
