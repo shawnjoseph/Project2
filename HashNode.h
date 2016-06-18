@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 
 template <class Key, class Value> class HashNode {
