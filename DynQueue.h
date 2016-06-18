@@ -71,7 +71,7 @@ public:
         }
         else{
             for (int i = count - 1; i >= 0; i--) {
-                cout << array[i] << " -> ";
+                cout << " -> " << array[i];
             }
             cout << "\n";
         }

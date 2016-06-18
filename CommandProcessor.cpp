@@ -69,7 +69,7 @@ void CommandProcessor::Process_Initial_Cmd(const string &cmd) {
 
 void CommandProcessor::ProcessStack(const string &cmd) {
     if (cmd == "Return Top Element") {
-        stack->top();
+        cout << stack->top() << endl;
     } else if (cmd == "Get Size") {
         stack->size();
     } else if (cmd == "Is List Empty") {
@@ -107,7 +107,11 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
     } else if (cmd == "Get Size") {
         queue->size();
     } else if (cmd == "Is List Empty") {
-        queue->empty();
+        if (queue->empty()) {
+            cout << "Queue is Empty." << endl;
+        } else {
+            cout << "Queue is not Empty." << endl;
+        }
     } else if (cmd == "Get Capacity/Array Size") {
         queue->capacity();
     } else if (cmd == "Display Queue") {
