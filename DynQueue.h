@@ -79,10 +79,10 @@ public:
     }
 
     void enqueue(Type const &data) {
+        itail++;
         if (count < arraySize - 1) {
+            array[itail] = data;
             ihead = 0;
-            itail = count;
-            array[count] = data;
             count++;
         }
         else {
@@ -94,7 +94,7 @@ public:
             }
             delete[] array;
             array = temp;
-            array[count] = data;
+            array[itail] = data;
             count++;
         }
     }

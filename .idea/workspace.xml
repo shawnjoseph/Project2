@@ -11,10 +11,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dedfc7ef-1c6c-442e-8979-e40200de413a" name="Default" comment="Added Makefile ./run to run">
+    <list default="true" id="dedfc7ef-1c6c-442e-8979-e40200de413a" name="Default" comment="added arraySize &gt; initialSize condition to array size change">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CommandProcessor.cpp" afterPath="$PROJECT_DIR$/CommandProcessor.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynQueue.h" afterPath="$PROJECT_DIR$/DynQueue.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynStack.h" afterPath="$PROJECT_DIR$/DynStack.h" />
     </list>
     <ignored path="Project2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandProcessor.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandProcessor.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommandProcessor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1998">
-              <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+            <state relative-caret-position="218">
+              <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynQueue.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DynQueue.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DynQueue.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="938">
-              <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
+            <state relative-caret-position="-1060">
+              <caret line="84" column="22" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -99,9 +99,9 @@
         <entry file="file://$PROJECT_DIR$/DynStack.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="774">
-              <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+              <caret line="95" column="61" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
               <folding>
-                <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+                <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
               </folding>
             </state>
           </provider>
@@ -156,12 +156,12 @@
         <option value="$PROJECT_DIR$/CommandProcessor.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/Menu.cpp" />
-        <option value="$PROJECT_DIR$/CommandProcessor.cpp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/HashMap.h" />
         <option value="$PROJECT_DIR$/HashNode.h" />
         <option value="$PROJECT_DIR$/DynStack.h" />
         <option value="$PROJECT_DIR$/DynQueue.h" />
+        <option value="$PROJECT_DIR$/CommandProcessor.cpp" />
       </list>
     </option>
   </component>
@@ -572,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466269617215</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added arraySize &gt; initialSize condition to array size change">
+      <created>1466283066286</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1466283066286</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -649,7 +656,8 @@
     <MESSAGE value="Checked the project pdf and said we needed to demonstrate using strings, so i just changed to take in string inputs. Everything works!" />
     <MESSAGE value="Updated README" />
     <MESSAGE value="Added Makefile ./run to run" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Makefile ./run to run" />
+    <MESSAGE value="added arraySize &gt; initialSize condition to array size change" />
+    <option name="LAST_COMMIT_MESSAGE" value="added arraySize &gt; initialSize condition to array size change" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -674,7 +682,7 @@
         <state relative-caret-position="1845">
           <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -744,7 +752,7 @@
         <state relative-caret-position="1845">
           <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -806,7 +814,7 @@
         <state relative-caret-position="864">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -876,7 +884,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -904,7 +912,7 @@
         <state relative-caret-position="1494">
           <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -932,7 +940,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -960,7 +968,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1025,16 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommandProcessor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1998">
-          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1075,18 +1073,28 @@
     <entry file="file://$PROJECT_DIR$/DynStack.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
-          <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+          <caret line="95" column="61" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
           <folding>
-            <marker date="1466282791104" expanded="true" signature="2827:3155" ph="..." />
+            <marker date="1466283062532" expanded="true" signature="2830:3158" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DynQueue.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="938">
-          <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
+        <state relative-caret-position="-1060">
+          <caret line="84" column="22" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommandProcessor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

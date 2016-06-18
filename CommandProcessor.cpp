@@ -91,7 +91,7 @@ void CommandProcessor::ProcessStack(const string &cmd) {
         string input;
         cout << "Enter value to erase from stack: " << endl;
         getline(cin, input);
-        stack->erase(input);
+        cout << stack->erase(input) << " values were erased." << endl;
     } else if (cmd == "Exit") {
         exit(0);
     } else {
@@ -129,7 +129,7 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
         string input;
         cout << "Enter value to erase from queue: " << endl;
         getline(cin, input);
-        queue->erase(input);
+        cout << queue->erase(input) << " values were erased." << endl;
     } else if (cmd == "Exit") {
         exit(0);
     } else {
