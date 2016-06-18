@@ -45,8 +45,8 @@ const string* Menu::Get_Command(void) const
 
         if ((choice < 1) || (choice > nr_commands))
         {
-//            cout << "Invalid choice\n";
-//            cout << "Please try again\n\n";
+            cout << "Invalid choice\n";
+            cout << "Please try again\n\n";
             continue;
         }
         return commands[--choice];
