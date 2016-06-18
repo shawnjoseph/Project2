@@ -93,7 +93,7 @@ public:
             myTop--;
             count--;
         }
-        if(myTop == arraySize/4) {
+        if (myTop == arraySize / 4 && arraySize > initialSize) {
             arraySize = arraySize / 2;
             Type *temp;
             temp = new Type[arraySize];
@@ -132,7 +132,7 @@ public:
         delete [] array;
         array = temp;
 
-        if (myTop == arraySize / 4) {
+        if (myTop == arraySize / 4 && arraySize > initialSize) {
             arraySize = arraySize / 2;
             Type *temp2;
             temp2 = new Type[arraySize];
