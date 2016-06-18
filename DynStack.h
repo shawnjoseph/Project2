@@ -31,6 +31,8 @@ public:
 
     ~DynStack(){
         delete [] array;
+        count = 0;
+        myTop = -1;
     }
 
     Type top() const {
@@ -46,7 +48,7 @@ public:
         if (count == 0) {
             cout << "Yes. Stack is Empty.\n";
         } else {
-            "No. Stack is Not Empty.\n";
+            cout << "No. Stack is Not Empty.\n";
         }
         return count == 0;
     }
@@ -84,7 +86,7 @@ public:
     Type pop() {
         Type val  = array[myTop];
 
-        if(myTop == -1) {
+        if (myTop == -1 || myTop == 0) {
             cerr << "Error: Stack is Empty." << endl;
         }
         else {

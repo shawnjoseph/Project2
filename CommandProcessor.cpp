@@ -9,9 +9,9 @@ Command_States CommandProcessor::command_state = Initial;
 Menu *CommandProcessor::menus[NR_CMD_STATES];
 
 // Create Stack, Queue, HashMap here
-DynStack<double> *stack = new DynStack<double>();
-DynQueue<double> *queue = new DynQueue<double>();
-HashMap<int, int> *hashMap = new HashMap<int, int>();
+DynStack<string> *stack = new DynStack<string>();
+DynQueue<string> *queue = new DynQueue<string>();
+HashMap<int, string> *hashMap = new HashMap<int, string>();
 
 
 void CommandProcessor::Process_Commands() {
@@ -79,20 +79,18 @@ void CommandProcessor::ProcessStack(const string &cmd) {
     } else if (cmd == "Display Stack") {
         stack->display();
     } else if (cmd == "Push") {
-        double input;
+        string input;
         cout << "Enter value: " << endl;
-        cin >> input;
-        getchar();
+        getline(cin, input);
         stack->push(input);
     } else if (cmd == "Pop") {
         stack->pop();
     } else if (cmd == "Clear") {
         stack->clear();
     } else if (cmd == "Erase") {
-        double input;
+        string input;
         cout << "Enter value to erase from stack: " << endl;
-        cin >> input;
-        getchar();
+        getline(cin, input);
         stack->erase(input);
     } else if (cmd == "Exit") {
         exit(0);
@@ -115,20 +113,18 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
     } else if (cmd == "Display Queue") {
         queue->display();
     } else if (cmd == "Enqueue") {
-        double input;
-        cout << "Enter double to enqueue: " << endl;
-        cin >> input;
-        getchar();
+        string input;
+        cout << "Enter value to enqueue: " << endl;
+        getline(cin, input);
         queue->enqueue(input);
     } else if (cmd == "Dequeue") {
         queue->dequeue();
     } else if (cmd == "Clear") {
         queue->clear();
     } else if (cmd == "Erase") {
-        double input;
+        string input;
         cout << "Enter value to erase from queue: " << endl;
-        cin >> input;
-        getchar();
+        getline(cin, input);
         queue->erase(input);
     } else if (cmd == "Exit") {
         exit(0);
@@ -143,10 +139,10 @@ void CommandProcessor::ProcessHashTable(const string &cmd) {
         int key;
         cout << "Enter key value of node: " << endl;
         cin >> key;
-        int value;
-        cout << "Enter value of node: " << endl;
-        cin >> value;
         getchar();
+        string value;
+        cout << "Enter value of node: " << endl;
+        getline(cin, value);
         hashMap->insertValue(key, value);
         hashMap->print();
     } else if (cmd == "Delete") {

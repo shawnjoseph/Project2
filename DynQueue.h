@@ -102,7 +102,7 @@ public:
     Type dequeue() {
         Type val = array[ihead];
         if (empty()) {
-            cerr << "Error: Stack is Empty." << endl;
+            cerr << "Error. Queue is Empty." << endl;
         }
         else {
             for (int i = 0; i < count; i++) {
