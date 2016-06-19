@@ -69,7 +69,7 @@ void CommandProcessor::Process_Initial_Cmd(const string &cmd) {
 
 void CommandProcessor::ProcessStack(const string &cmd) {
     if (cmd == "Return Top Element") {
-        cout << stack->top() << endl;
+        cout << "Top: " << stack->top() << endl;
     } else if (cmd == "Get Size") {
         stack->size();
     } else if (cmd == "Is List Empty") {

@@ -39,11 +39,11 @@ public:
         if(myTop == -1){ cout << "Error Stack Empty" << endl; }
         return this->array[myTop];
     }
-//
+
     int size() const {cout << "Size: " << count << endl; return count; }
-//
+
     int capacity() const { cout << "Capacity: " << arraySize << endl; return arraySize; }
-//
+
     bool isEmpty() const {
         if (count == 0) {
             cout << "Yes. Stack is Empty.\n";
@@ -52,7 +52,7 @@ public:
         }
         return count == 0;
     }
-//
+
     void display() {
         if(count == 0){ cout << "Stack is empty\n" << endl; }
         else
@@ -86,7 +86,7 @@ public:
     Type pop() {
         Type val  = array[myTop];
 
-        if (myTop == -1 || myTop == 0) {
+        if (myTop == -1) {
             cerr << "Error: Stack is Empty." << endl;
         }
         else {
@@ -117,20 +117,36 @@ public:
     int erase (Type const & data) {
         int counter = 0;
         Type *temp = new Type[arraySize];
-        for(int i = 0, j=0; i < arraySize; i++, j++){
-            Type tmp_val = array[i];
-            if(tmp_val != data ){
+        int tmp_size = 0;
+        for (int i = myTop, j = 0; i > -1; i--, j++) {
+            Type tmp_val = pop();
+            if (tmp_val != data) {
                 temp[j] = tmp_val;
+                tmp_size++;
             }
             else{
                 j--;
                 counter++;
-                myTop--;
             }
         }
-
-        delete [] array;
-        array = temp;
+        for (int i = 0; i < tmp_size; i++) {
+            push(temp[i]);
+        }
+        delete[] temp;
+//        for(int i = 0, j=0; i < arraySize; i++, j++){
+//            Type tmp_val = array[i];
+//            if(tmp_val != data ){
+//                temp[j] = tmp_val;
+//            }
+//            else{
+//                j--;
+//                counter++;
+//                myTop--;
+//            }
+//        }
+//
+//        delete [] array;
+//        array = temp;
 
         if (myTop == arraySize / 4 && arraySize > initialSize) {
             arraySize = arraySize / 2;

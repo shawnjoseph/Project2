@@ -136,20 +136,37 @@ public:
     int erase(Type const &data) {
         int counter = 0;
         int size = count;
+        int tmp_size = 0;
         Type *temp = new Type[arraySize];
+
         for (int i = 0, j = 0; i < size; i++, j++) {
-            Type tmp_val = array[i];
-            if(tmp_val != data ){
+            Type tmp_val = dequeue();
+            if (tmp_val != data) {
                 temp[j] = tmp_val;
+                tmp_size++;
             }
-            else{
+            else {
                 j--;
                 counter++;
-                count--;
             }
         }
-        delete [] array;
-        array = temp;
+        for (int i = 0; i < tmp_size; i++) {
+            enqueue(temp[i]);
+        }
+        delete[] temp;
+//        for (int i = 0, j = 0; i < size; i++, j++) {
+//            Type tmp_val = array[i];
+//            if(tmp_val != data ){
+//                temp[j] = tmp_val;
+//            }
+//            else{
+//                j--;
+//                counter++;
+//                count--;
+//            }
+//        }
+//        delete [] array;
+//        array = temp;
 
         if (count == arraySize / 4 && arraySize > initialSize) {
             arraySize = arraySize / 2;
