@@ -129,7 +129,7 @@ public:
                 counter++;
             }
         }
-        for (int i = 0; i < tmp_size; i++) {
+        for (int i = tmp_size - 1; i >= 0; i--) {
             push(temp[i]);
         }
         delete[] temp;
