@@ -44,8 +44,11 @@ public:
 
     Value *search(Key query) {
         // Searches for a value in the hashmap
-        hashResult = hash<Key>{}(query);
-
+        int intKey = 0;
+        for (int i = 0; i < query.length(); i++) {
+            intKey += query.front();
+        }
+        hashResult = to_string((intKey * 1000) % 31);
         /*
          * Ok NOW LISTEN
          * Don't listen to that guy up above
@@ -103,7 +106,11 @@ public:
         bool blankInsert = true;
         // Inserts a value into the hashmap
         loadFactor = numOfEntries / (double) tableSize;
-        hashResult = hash<Key>()(key);
+        int intKey = 0;
+        for (int i = 0; i < key.length(); i++) {
+            intKey += key.front();
+        }
+        hashResult = to_string((intKey * 1000) % 31);
         for (int i = 0; i < tableSize; i++) {
             if (table[i] != NULL) {
                 if (table[i]->getKey() == hashResult) {

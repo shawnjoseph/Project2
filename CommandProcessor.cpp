@@ -11,7 +11,7 @@ Menu *CommandProcessor::menus[NR_CMD_STATES];
 // Create Stack, Queue, HashMap here
 DynStack<string> *stack = new DynStack<string>();
 DynQueue<string> *queue = new DynQueue<string>();
-HashMap<int, string> *hashMap = new HashMap<int, string>();
+HashMap<string, string> *hashMap = new HashMap<string, string>();
 
 
 void CommandProcessor::Process_Commands() {
@@ -140,27 +140,24 @@ void CommandProcessor::ProcessQueue(const string &cmd) {
 
 void CommandProcessor::ProcessHashTable(const string &cmd) {
     if (cmd == "Insert") {
-        int key;
+        string key;
         cout << "Enter key value of node: " << endl;
-        cin >> key;
-        getchar();
+        getline(cin, key);
         string value;
         cout << "Enter value of node: " << endl;
         getline(cin, value);
         hashMap->insertValue(key, value);
         hashMap->print();
     } else if (cmd == "Delete") {
-        int key;
+        string key;
         cout << "Enter key to delete: " << endl;
-        cin >> key;
-        getchar();
+        getline(cin, key);
         hashMap->deleteValue(key);
         hashMap->print();
     } else if (cmd == "Search") {
-        int key;
+        string key;
         cout << "Enter key to search for: " << endl;
-        cin >> key;
-        getchar();
+        getline(cin, key);
         hashMap->search(key);
     } else if (cmd == "Print") {
         hashMap->print();
